@@ -56,6 +56,6 @@ def root():
         "version": "1.0.0"
     }
 
-@app.get("/health")
+@app.api_route("/api/health", methods=["GET", "HEAD"])
 def health_check():
     return {"status": "healthy"}
