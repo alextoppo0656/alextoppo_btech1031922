@@ -214,9 +214,18 @@ The project uses incremental commits to show development progress:
 ### Profile Management
 ![Profile Page](screenshots/profile.png)
 
-### Live Demo
-- Frontend: https://alextoppo-btech1031922.vercel.app
-- Backend API: https://alextoppo-btech1031922.onrender.com/docs
+## Live Demo
+
+- **Frontend:** https://alextoppo-btech1031922.vercel.app
+- **Backend API Docs:** https://alextoppo-btech1031922.onrender.com/docs
+
+### Test Credentials
+
+For testing purposes, you can use:
+- **Email:** you@example.com
+- **Password:** johndoe
+
+Or feel free to create your own account!
 
 ## License
 
