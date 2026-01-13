@@ -105,6 +105,22 @@ const Dashboard = () => {
     setShowModal(true);
   };
 
+  const handleMoveTask = async (task, newStatus) => {
+    if (task.status === newStatus) return;
+    
+    // Optimistic update
+    setTasks(tasks.map(t => 
+      t.id === task.id ? { ...t, status: newStatus } : t
+    ));
+
+    try {
+      await taskAPI.patchTask(task.id, { status: newStatus });
+    } catch (err) {
+      setError('Failed to update task status');
+      await fetchTasks();
+    }
+  };
+
   const resetForm = () => {
     setFormData({
       title: '',
@@ -196,6 +212,7 @@ const Dashboard = () => {
               tasks={getTasksByStatus('pending')}
               onDelete={handleDeleteTask}
               onEdit={handleEditTask}
+              onMove={handleMoveTask}
             />
             <KanbanColumn
               title="In Progress"
@@ -203,6 +220,7 @@ const Dashboard = () => {
               tasks={getTasksByStatus('in-progress')}
               onDelete={handleDeleteTask}
               onEdit={handleEditTask}
+              onMove={handleMoveTask}
             />
             <KanbanColumn
               title="Completed"
@@ -210,6 +228,7 @@ const Dashboard = () => {
               tasks={getTasksByStatus('completed')}
               onDelete={handleDeleteTask}
               onEdit={handleEditTask}
+              onMove={handleMoveTask}
             />
           </div>
 

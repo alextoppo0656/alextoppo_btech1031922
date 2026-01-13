@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { format } from 'date-fns';
 
-const TaskCard = ({ task, onDelete, onEdit }) => {
+const TaskCard = ({ task, onDelete, onEdit, onMove }) => {
   const {
     attributes,
     listeners,
@@ -56,7 +56,7 @@ const TaskCard = ({ task, onDelete, onEdit }) => {
         )}
       </div>
       
-      <div className="flex gap-2 pt-2 border-t border-gray-100">
+      <div className="flex gap-2 pt-2 border-t border-gray-100 items-center flex-wrap">
         <button
           onClick={() => onEdit(task)}
           className="text-xs text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
@@ -69,6 +69,37 @@ const TaskCard = ({ task, onDelete, onEdit }) => {
         >
           Delete
         </button>
+        
+        {/* Mobile quick-move buttons */}
+        <div className="sm:hidden flex gap-1 ml-auto text-xs">
+          {task.status !== 'pending' && (
+            <button
+              onClick={() => onMove(task, 'pending')}
+              className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200"
+              title="Move to Pending"
+            >
+              ⏸
+            </button>
+          )}
+          {task.status !== 'in-progress' && (
+            <button
+              onClick={() => onMove(task, 'in-progress')}
+              className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
+              title="Move to In Progress"
+            >
+              ▶
+            </button>
+          )}
+          {task.status !== 'completed' && (
+            <button
+              onClick={() => onMove(task, 'completed')}
+              className="px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200"
+              title="Move to Completed"
+            >
+              ✓
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

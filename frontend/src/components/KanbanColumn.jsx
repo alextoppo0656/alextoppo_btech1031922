@@ -2,7 +2,7 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import TaskCard from './TaskCard';
 
-const KanbanColumn = ({ title, status, tasks, onDelete, onEdit }) => {
+const KanbanColumn = ({ title, status, tasks, onDelete, onEdit, onMove }) => {
   const { setNodeRef } = useDroppable({ id: status });
 
   const getColumnColor = (status) => {
@@ -35,6 +35,7 @@ const KanbanColumn = ({ title, status, tasks, onDelete, onEdit }) => {
               task={task}
               onDelete={onDelete}
               onEdit={onEdit}
+              onMove={onMove}
             />
           ))}
           {tasks.length === 0 && (
