@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-import { DndContext, DragOverlay, closestCorners } from '@dnd-kit/core';
+import { 
+  DndContext, 
+  DragOverlay, 
+  closestCorners,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core';
 import Navbar from '../components/Navbar';
 import KanbanColumn from '../components/KanbanColumn';
 import TaskCard from '../components/TaskCard';
@@ -19,6 +27,21 @@ const Dashboard = () => {
     status: 'pending',
     due_date: '',
   });
+
+  // Add touch and pointer sensors for mobile support
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8, // 8px movement required to start drag
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 200, // 200ms hold to start drag
+        tolerance: 8, // 8px movement tolerance
+      },
+    })
+  );
 
   useEffect(() => {
     fetchTasks();
@@ -161,6 +184,7 @@ const Dashboard = () => {
         )}
 
         <DndContext
+          sensors={sensors}
           collisionDetection={closestCorners}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
