@@ -31,7 +31,14 @@ cd frontend
 npm install
 ```
 
-3. Start the development server:
+3. Configure environment variables:
+
+Create & Edit `.env` as:
+```
+VITE_API_URL=http://localhost:8000 (or your backend link)
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 ```

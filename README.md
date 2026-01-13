@@ -83,9 +83,6 @@ pip install -r requirements.txt
 ```
 
 4. Setup environment variables:
-```bash
-cp .env.example .env
-```
 
 Edit `.env` and set your SECRET_KEY (important for production).
 

@@ -36,11 +36,8 @@ pip install -r requirements.txt
 ```
 
 4. Configure environment variables:
-```bash
-cp .env.example .env
-```
 
-Edit `.env` and update the SECRET_KEY:
+Create & Edit `.env` as:
 ```
 SECRET_KEY=your-super-secret-key-here
 ALGORITHM=HS256
