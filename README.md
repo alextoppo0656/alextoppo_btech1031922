@@ -200,6 +200,24 @@ The project uses incremental commits to show development progress:
 - Profile management
 - Error handling and validation
 
+## Screenshots
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Kanban Board
+![Kanban Dashboard](screenshots/dashboard.png)
+
+### Create Task
+![Create Task Modal](screenshots/create-task.png)
+
+### Profile Management
+![Profile Page](screenshots/profile.png)
+
+### Live Demo
+- Frontend: https://alextoppo-btech1031922.vercel.app
+- Backend API: https://alextoppo-btech1031922.onrender.com/docs
+
 ## License
 
 This project is open source and available for educational purposes.
