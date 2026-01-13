@@ -188,17 +188,6 @@ The API returns standard HTTP status codes:
 
 All errors include a JSON response with error details.
 
-## Future Improvements
-
-- Task priority levels
-- Task categories/tags
-- Task search and filtering
-- File attachments
-- Team collaboration
-- Email notifications
-- Task comments
-- Dark mode
-
 ## Development
 
 The project uses incremental commits to show development progress:
